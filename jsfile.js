@@ -87,9 +87,10 @@ if(event.target.classList.contains("num"))
 
     if(event.target.classList.contains("op") &&   temp != "")
     {
-        if(x1 != "")
+        if(operation != "" && x1 != "" && temp != "") 
         {
-            operation = event.target.id;
+            
+          //  operation = event.target.id;
             x2 = temp;
             console.log(x1 + " " + x2 + " " + operation);
             let tempret = operate(x1,x2, operation);
@@ -107,12 +108,20 @@ if(event.target.classList.contains("num"))
         }
         else
         {
-            x1 = temp;
-            temp = "";
-            operation = event.target.id;
-            console.log(typeof(operation));
-            console.log(event.target.id);
-            console.log(operation+" operation");
+            if(x1 == "")
+            {
+                x1 = temp;
+                temp = "";
+                operation = event.target.id;
+                console.log(typeof(operation));
+                console.log(event.target.id);
+                console.log(operation+" operation");
+            }
+            else if(operation == "")
+            {
+                operation = event.target.id;
+            }
+            
         }
        
         
