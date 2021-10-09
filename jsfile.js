@@ -60,8 +60,8 @@ function operate(x,y, op)
 
 
 let temp = "";
-let x1;
-let x2;
+let x1 = "";
+let x2 = "";
 let operation = "";
 const bottom = document.querySelector(".bot"); 
 const display = document.querySelector(".top"); // display div
@@ -79,7 +79,7 @@ if(event.target.classList.contains("num"))
     console.log(event.target.id);
     temp += event.target.id;
     console.log()
-    console.dir(display);
+   // console.dir(display);
     display.textContent = temp;
     console.log(typeof(temp));
     }
@@ -89,12 +89,15 @@ if(event.target.classList.contains("num"))
     {
         if(x1 != "")
         {
-            
+            operation = event.target.id;
             x2 = temp;
+            console.log(x1 + " " + x2 + " " + operation);
             let tempret = operate(x1,x2, operation);
+            
             operation = event.target.id;
             console.log("tempret " + tempret);
             temp = tempret;
+            console.log(temp);
             display.textContent = temp;
             temp = ""
             
@@ -121,17 +124,24 @@ if(event.target.classList.contains("num"))
         x2 = temp;
         
         temp = "";
+        console.log(x1 + " " + x2 + " " + operation);
         let ret = operate(x1, x2, operation);
         console.log(ret + " ret returned");
        // console.log(typeof(ret)+" ret");
         if( ret == "OOPS")
         {
+            temp = "";
+            x1 = "";
+            x2 = "";
+            operation = "";
+            display.textContent = "Error please clear";
             return;
         }
-        temp = ret;
-        x1 = "";
+        temp = "";
+        x1 = ret;
         x2 = "";
-        display.textContent = temp;
+        console.log(x1);
+        display.textContent = x1;
         operation = "";
        
         
@@ -149,7 +159,9 @@ if(event.target.classList.contains("num"))
     if(event.target.id == "del")
     {
         temp = temp.slice(0,-1);
+        console.log(temp);
         display.textContent = temp;
+      
     }
 
 }
